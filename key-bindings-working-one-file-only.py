@@ -25,15 +25,15 @@ import tkinter.messagebox
 import json 
 from tkinter import filedialog
 import matplotlib.pyplot as plt
-import gc 
+
 
 # Load data from .npy - select directory with .npy files in
 def load_data(file) : 
     return np.load(Path(selected_dir/file))
 
 # For outputting the output JSON file. 
-def dump_json(dict, selected_dir) : 
-    name =  Path("output.json")
+def dump_json(dict, save_dir) : 
+    name =  Path(save_dir/"output.json")
     with open(name, "w") as out : 
         json.dump(dict, out)
 
@@ -76,27 +76,27 @@ def move(delta):
 
     
 def label_positive(i, delta):
-    global cwd
+    global cwd, save_dir
     
     # Appends the new label to the existing output file
     with open("label_output.txt", 'a') as saving:
         saving.write(files[i] + "," + "1" + "\n")
 
     dict[files[i]] = 1 
-    dump_json(dict, cwd)
+    dump_json(dict, save_dir)
 
     move(delta)
     
 # Label the files[i] file as a negative example and move on by delta (-1)
 def label_negative(i, delta):
-    global cwd
+    global cwd, save_dir
     
     # Appends the new label to the existing output file
     with open("label_output.txt", 'a') as saving:
         saving.write(files[i] + "," + "0" + "\n")
         
     dict[files[i]] = 0
-    dump_json(dict, cwd)
+    dump_json(dict, save_dir)
     
     move(delta)
 
@@ -118,16 +118,15 @@ root = tk.Tk()
 root.geometry('1200x540')
 cwd = Path(os.getcwd())
 
-selected_dir = Path(filedialog.askdirectory(parent=root))
+selected_dir = Path(filedialog.askdirectory(parent=root, title = "Choose directory containing .npy files"))
 files = os.listdir(selected_dir)
+
+save_dir = Path(filedialog.askdirectory(parent = root, title = "Choose save directory for JSON/txt output"))
 
 # Creates the save files. 
 dict = {}
-dump_json(dict, selected_dir)
+dump_json(dict, save_dir)
 labels = {0: "No triangle", 1: "Triangle"}
-
-
-
 
  #The figure that is displayed on the tkinter window
 fig = Figure(figsize=(8,6))
