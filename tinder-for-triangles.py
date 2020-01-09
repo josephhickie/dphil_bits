@@ -152,9 +152,6 @@ tk.Button(root, text="Move backward (left)", command=lambda: move(-1)).grid(row=
 counter = tk.Label(root, text="You are on: [{}/{}] images".format(current+1, len(files)))
 counter.grid(row=6, column=1)
 
-gc.collect()
-
-
 frame = tk.Frame(root)
 frame.grid(row=1, column=1)
 
