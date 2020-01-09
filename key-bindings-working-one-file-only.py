@@ -3,6 +3,13 @@
 """
 Created on Wed Jan  8 13:08:39 2020
 
+Select a directory that contains .npy files, each of a separate scan. The program will then 
+display them on the screen and allow you to mark each as either not being a triangle or as 
+containing triangles. This information is then saved to a text file (which contains all decisions 
+you make, including ones you later correct) and an updated JSON file (which only contains the
+latest, correct labels). The JSON output is in the form {"file-name.npy: label}, where the 
+label is either 0 (no triangle) or 1 (triangle). 
+
 @author: joseph
 """
 
