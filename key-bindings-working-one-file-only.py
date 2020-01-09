@@ -132,5 +132,5 @@ root.bind('<t>', lambda event: label_positive(current, +1))
 root.bind('<space>', lambda event: label_negative(current, +1))
 
 move(0)
-root.title("Triangle labeller")
+root.title("Tinder for triangles")
 root.mainloop()
