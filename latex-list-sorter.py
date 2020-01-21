@@ -1,10 +1,9 @@
 import tkinter as tk 
-from tkinter import simpledialog
 import pyperclip 
 
 # Set up Tkinter
 root = tk.Tk()
-items = simpledialog.askstring("Title","Enter a string of items from latex:")
+items = tk.simpledialog.askstring("Title","Enter a string of items from latex:")
 
 # Split up the list and alphabitise
 items = items.split("\\")
