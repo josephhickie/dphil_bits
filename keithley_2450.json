@@ -1,0 +1,8 @@
+{
+  "keithley_2450": {
+      "address":"USB0::1510::9296::04064751::0::INSTR", 
+      "labels": ["voltage", "status"], 
+      "configs": {"set_source": 0.2, "set_status": 1
+      }
+  }
+}
