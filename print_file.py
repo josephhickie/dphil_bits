@@ -31,13 +31,6 @@ while True :
         print("Problem logging in. Try again.")
         PWD = getpass("Please enter your email password: ")
 
-'''
-try : 
-    s.login(FROM, PWD) 
-except : 
-    print("Problem logging in. Try again. ")
-'''   
-
 # Graphically select file  
 Tk().withdraw()
 
@@ -89,8 +82,3 @@ except :
 
 # terminating the session 
 s.quit() 
-
-
-
-
-
