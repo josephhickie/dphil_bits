@@ -11,8 +11,8 @@ from getpass import getpass
 
 PWD = getpass("Please enter your email password: ")
 
-FROM = "trin3399@OX.AC.UK"
-TO = "followmeprint@materials.ox.ac.uk"
+FROM = YOUR_OX_EMAIL
+TO = FOLLOWME PRINT EMAIL
 
 # creates SMTP session 
 s = smtplib.SMTP('outlook.office365.com', 587)
