@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/home/joseph/anaconda3/bin/python3
+
 
 import smtplib
 from email.mime.multipart import MIMEMultipart 
@@ -6,13 +7,14 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase 
 from email import encoders
 from tkinter import Tk 
-from tkinter.filedialog import askopenfilename
+from tkinter.filedialog import askopenfilenames
 from getpass import getpass
+
 
 PWD = getpass("Please enter your email password: ")
 
-FROM = YOUR_OX_EMAIL
-TO = FOLLOWME PRINT EMAIL
+FROM = # PUT EMAIL HERE
+TO = # PUT PRINTER EMAIL HERE
 
 # creates SMTP session 
 s = smtplib.SMTP('outlook.office365.com', 587)
@@ -29,14 +31,15 @@ while True :
         break
     except : 
         print("Problem logging in. Try again.")
-        PWD = getpass("Please enter your email password: ")
+        PWD = input("Please enter your email password: ")
 
-# Graphically select file  
+
+# Graphically select files
 Tk().withdraw()
 
-filename = askopenfilename(title = "Select files to send", filetypes = [(".docx", ".pdf")], initialdir = '~/')
+filenames = askopenfilenames(title = "Select files to send", filetypes = [(".docx", ".pdf")], initialdir = '~/')
 
-checker = input("Sending {} to print. Press enter to send to print, anything else to exit.".format(filename))
+checker = input("Sending {} to print. Press enter to send to print, anything else to exit.".format(filenames))
 
 if checker == '' : 
     pass
@@ -52,19 +55,24 @@ msg['From'] = FROM
 msg['To'] = TO 
 msg['Subject'] = "Attachment for printing"
   
-# open the file to be sent  
-attachment = open(filename, "rb") 
+# open the file to be sent
+attachments = []
+for file in filenames : 
+    attachments.append(open(file, "rb"))
+
+#attachment = open(filename, "rb") 
   
 # instance of MIMEBase and named as p 
 p = MIMEBase('application', 'octet-stream') 
   
 # To change the payload into encoded form 
-p.set_payload((attachment).read()) 
+for attachment in attachments : 
+    p.set_payload((attachment).read()) 
   
 # encode into base64 
 encoders.encode_base64(p) 
    
-p.add_header('Content-Disposition', "attachment; filename = {}".format(filename)) 
+p.add_header('Content-Disposition', "attachment; filename = {}".format(filenames[0])) 
   
 # attach the instance 'p' to instance 'msg' 
 msg.attach(p) 
@@ -82,3 +90,8 @@ except :
 
 # terminating the session 
 s.quit() 
+
+
+
+
+
