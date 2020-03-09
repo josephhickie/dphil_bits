@@ -31,7 +31,7 @@ while True :
         break
     except : 
         print("Problem logging in. Try again.")
-        PWD = input("Please enter your email password: ")
+        PWD = getpass("Please enter your email password: ")
 
 
 # Graphically select files
