@@ -117,9 +117,8 @@ def load() :
     if ask == "yes" :
         new_dict = Path(filedialog.askopenfilename(parent = root, title = "Choose json save file", initialdir = os.path.expanduser('~/Downloads')))
         string_dict = load_json(new_dict)
-        for key in string_dict.keys() : 
-            string_dict[int(key)] = string_dict.pop(key)
-        return string_dict
+        dict_out = {int(k): v for k, v in string_dict.items()}
+        return dict_out
 
     else : 
         return {}
