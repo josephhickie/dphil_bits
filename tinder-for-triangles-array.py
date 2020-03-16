@@ -7,8 +7,8 @@ Select a .npy file that contains an array of nps each of a separate scan. The pr
 display them on the screen and allow you to mark each as either not being a triangle or as 
 containing triangles. This information is then saved to a text file (which contains all decisions 
 you make, including ones you later correct) and an updated JSON file (which only contains the
-latest, correct labels). The JSON output is in the form {"file-name.npy: label}, where the 
-label is either 0 (no triangle) or 1 (triangle). 
+latest, correct labels). The JSON output is in the form {int: label}, where the 
+label is either 0 (no triangle) or 1 (triangle) and the int is the index of the array.
 
 
 @author: joseph
