@@ -145,7 +145,7 @@ root.geometry('1200x940')
 
 dict = load()
 
-current = len(dict)
+current = len(dict) - 1
 
 dump_json(dict, save_dir)
 labels = {0: "No triangle", 1: "Triangle", 2: "Maybe triangle"}
