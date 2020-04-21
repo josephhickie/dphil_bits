@@ -10,6 +10,8 @@ you make, including ones you later correct) and an updated JSON file (which only
 latest, correct labels). The JSON output is in the form {int: label}, where the 
 label is either 0 (no triangle) or 1 (triangle) and the int is the index of the array.
 
+You can save the json file which contains the 
+
 
 @author: joseph
 """
@@ -118,10 +120,10 @@ def load() :
         new_dict = Path(filedialog.askopenfilename(parent = root, title = "Choose json save file", initialdir = os.path.expanduser('~/Downloads')))
         string_dict = load_json(new_dict)
         dict_out = {int(k): v for k, v in string_dict.items()}
-        return dict_out
+        return dict_out, len(dict_out) - 1
 
     else : 
-        return {}
+        return {}, 0
 
 
     
@@ -143,9 +145,7 @@ root.geometry('1200x940')
 
 # Creates the save files. 
 
-dict = load()
-
-current = len(dict) - 1
+dict, current = load()
 
 dump_json(dict, save_dir)
 labels = {0: "No triangle", 1: "Triangle", 2: "Maybe triangle"}
